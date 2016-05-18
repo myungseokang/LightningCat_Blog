@@ -1,5 +1,14 @@
 source 'https://rubygems.org'
 
+# Added for this project
+gem 'jquery-turbolinks'
+gem 'foundation-rails'
+gem 'foundation-icons-sass-rails'
+gem 'simple_form'
+gem 'devise'
+gem 'rolify'
+gem 'authority'
+gem "letter_opener", :group => :development
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
