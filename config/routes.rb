@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  resources :comments
-  resources :posts
-  resources :categories
-  devise_for :users
-  # get 'home/index'
   root 'home#index'
+
+  resources :categories
+  resources :posts do
+    get 'list_my', on: :collection
+    resources :comments
+  end
+
+  devise_for :users
 end

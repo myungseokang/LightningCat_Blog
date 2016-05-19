@@ -24,7 +24,7 @@
       <li>
         <a href="/">HOME</a>
       </li>
-      <li><%= link_to "Archives", '#' %></li>
+      <li><%= link_to "PostList", '/posts' %></li>
       <li><%= link_to "Readme", '#' %></li>
     </ul>
   </div>
@@ -47,17 +47,17 @@
   </div>
 </div>
 
-<div id="blog-banner">
-  <%= image_tag 'blog_header.png', width: '100%' %>
-</div>
-
-<%= content_for?(:devise) ? yield(:devise) : yield(:general) %>
-
-<div class='row column'>
-  <div id='footer'>
-    <p>Copyright&reg; 2016, FoundBlog, RORLAB, All rights reserved.</p>
+<% if @check %>
+  <div id="blog-banner">
+    <%= image_tag 'blog_header.png', class: 'lightning-cat',width: '100%', height: 'auto' %>
   </div>
-</div>
-
+<% else %>
+  <%= content_for?(:devise) ? yield(:devise) : yield(:general) %>
+  <div class='row column'>
+    <div id='footer'>
+      <p>Copyright&reg; 2016, LightningCat, L3opold7, All rights reserved.</p>
+    </div>
+  </div>
+<% end %>
 </body>
 </html>

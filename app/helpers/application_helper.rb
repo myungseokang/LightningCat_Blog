@@ -26,4 +26,17 @@ module ApplicationHelper
   def user_roles(user)
     user.roles.map(&:name).join(', ').titleize
   end
+
+  def published_icon(boolean)
+    if boolean
+      content_tag( :i, ' ', class: 'fi-check') + '작성완료'
+    else
+      content_tag( :i, ' ', class: 'fi-pencil') + '작성중...'
+    end
+  end
+
+  def icon_button(shape)
+    content_tag( :i, '', class: "fi-#{shape}")
+  end
+
 end
