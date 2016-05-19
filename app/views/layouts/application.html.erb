@@ -1,20 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title><%= content_for?(:title) ? yield(:title) : "FoundBlog v2.0" %></title>
-
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= content_for?(:title) ? yield(:title) : "Ligtning Cat" %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= favicon_link_tag 'favicon.ico' %>
   <%= csrf_meta_tags %>
 </head>
-
 <body>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<%= yield %>
+
+<div class="title-bar" data-responsive-toggle="foundblog-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle></button>
+  <div class="title-bar-title">Menu</div>
+</div>
+
+<div class="top-bar" id="foundblog-menu">
+  <div class="top-bar-left">
+    <ul class="menu">
+      <li class="menu-text">Lightning<i>Cat</i>
+      </li>
+      <li>
+        <a href="/">HOME</a>
+      </li>
+      <li><%= link_to "Archives", '#' %></li>
+      <li><%= link_to "Readme", '#' %></li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <% if user_signed_in? %>
+          <li>
+            <a href="#"><%= current_user.email %></a>
+            <ul class="menu">
+              <li><%= link_to "My Profile", edit_user_registration_path %></li>
+              <li><%= link_to "Roles : " + user_roles(current_user), '#' %></li>
+              <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure?" } %></li>
+            </ul>
+          </li>
+      <% else %>
+          <li><%= link_to "Sign in", new_user_session_path %></li>
+          <li><%= link_to "Sign up", new_user_registration_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div id="blog-banner">
+  <%= image_tag 'blog_header.png', width: '100%' %>
+</div>
+
+<%= content_for?(:devise) ? yield(:devise) : yield(:general) %>
+
+<div class='row column'>
+  <div id='footer'>
+    <p>Copyright&reg; 2016, FoundBlog, RORLAB, All rights reserved.</p>
+  </div>
+</div>
 
 </body>
 </html>
