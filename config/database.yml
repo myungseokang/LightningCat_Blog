@@ -14,11 +14,11 @@ default: &default
   encoding: utf8
   pool: 5
   username: root
-  password:
+  password: '0000'
   host: localhost
 
 development:
-  <<: *default
+  <<: *default  
   database: foundblog_development
 
 # Warning: The database defined as "test" will be erased and
