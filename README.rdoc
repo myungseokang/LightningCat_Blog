@@ -1,28 +1,21 @@
-== README
+== Rails Blog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+사용하는 Gem 목록
 
-Things you may want to cover:
+* jquery-turbolinks
 
-* Ruby version
+* letter_opener
 
-* System dependencies
+* authority
 
-* Configuration
+* rolify
 
-* Database creation
+* devise
 
-* Database initialization
+* simple_form
 
-* How to run the test suite
+* foundation-rails
 
-* Services (job queues, cache servers, search engines, etc.)
+* foundation-icons-sass-rails
 
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+등등의 gem을 사용하고 있습니다.
