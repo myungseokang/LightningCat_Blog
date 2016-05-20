@@ -36,7 +36,9 @@ module ApplicationHelper
   end
 
   def icon_button(shape)
-    content_tag( :i, '', class: "fi-#{shape}")
+    content_tag(:span, class:'badge') do
+      content_tag( :i, '', class: "fi-#{shape}")
+    end
   end
 
 end

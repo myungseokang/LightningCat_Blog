@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  resources :categories
+  resources :categories do
+    resources :posts
+  end
+  
   resources :posts do
     get 'list_my', on: :collection
     resources :comments

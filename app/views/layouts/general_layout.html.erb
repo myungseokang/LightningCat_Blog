@@ -1,7 +1,5 @@
 <!-- Section for General layouts -->
-<% if @posts.nil? %>
-    <% @posts = Post.all %>
-<% end %>
+<% @recent_posts = Post.recent %>
 
 <%= content_for :general do %>
     <div class='row'>
@@ -16,23 +14,38 @@
       <div class='medium-3 columns' style="margin-top: 1em">
         <div class='row'>
           <div class='medium-12 columns'>
+            <!-- 내가 작성한 글목록 -->
             <% if user_signed_in? %>
                 <p><%= link_to "My Posts <small>( #{Post.myposts(current_user).size} )</small>".html_safe, list_my_posts_path %></p>
             <% end %>
+            <!-- 최근 글목록 -->
             <p>Recent Posts :</p>
             <ul>
-              <% @posts.each do | post | %>
+              <% @recent_posts.each do | post | %>
                   <li><%= link_to truncate(post.title, length: 16), post_path(post) %></li>
               <% end %>
             </ul>
-            <hr>
-            <center>
-              <% if user_signed_in? %>
-                  <%= link_to 'New Post', new_post_path, class: 'button small' %>
-              <% else %>
-                  <%= link_to 'Sign in', new_user_session_path, class: 'button small' %>
+            <p>Category : <small><%= link_to "Admin", categories_path if user_signed_in? && current_user.has_role?(:admin) %></small></p>
+            <ul>
+              <li>
+                <%= link_to 'Uncategoried', posts_path(category_id: 0) %>
+                <small><%= Post.uncategorized_posts.size %></small>
+              </li>
+              <% Category.all.each do | category | %>
+                  <li>
+                    <%= link_to category.name, category_posts_path(category) %>
+                    <small><%= category.posts.published_posts.size %></small>
+                  </li>
               <% end %>
-            </center>
+            </ul>
+              <hr>
+              <center>
+                <% if user_signed_in? %>
+                    <%= link_to 'New Post', new_post_path, class: 'button small' %>
+                <% else %>
+                    <%= link_to 'Sign in', new_user_session_path, class: 'button small' %>
+                <% end %>
+              </center>
           </div>
         </div>
       </div>

@@ -1,29 +1,28 @@
-<p id="notice"><%= notice %></p>
+<h2>Listing categories</h2>
 
-<h1>Listing Categories</h1>
-
-<table>
+<table style='width:100%;'>
   <thead>
-    <tr>
-      <th>User</th>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th style='width:40%;'>Name</th>
+    <th>User</th>
+    <th>Actions</th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @categories.each do |category| %>
+  <% @categories.each do |category| %>
       <tr>
-        <td><%= category.user %></td>
         <td><%= category.name %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= category.user.email %></td>
+        <td>
+          <span class='action success badge' title='show'><%= link_to icon_button('eye'), category %></span>
+          <span class='action secondary badge' title='edit'><%= link_to icon_button('pencil'), edit_category_path(category) %></span>
+          <span class='action alert badge' title='destroy'><%= link_to icon_button('trash'), category, method: :delete, data: { confirm: 'Are you sure?' } %></span>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Category', new_category_path %>
+<%= link_to 'New Category', new_category_path, class: 'button small' %>
