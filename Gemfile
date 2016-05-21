@@ -8,13 +8,21 @@ gem 'simple_form'
 gem 'devise'
 gem 'rolify'
 gem 'authority'
+
+# 개발환경에서 mail 확인
 gem "letter_opener", :group => :development
+# 배포환경에서 mail 발송
+gem 'mailgun_rails'
 
 # Tag
 gem 'acts-as-taggable-on'
 
 # Search
 gem 'search_cop'
+
+# Deploy
+gem 'pg', :group => :production
+gem 'rails_12factor', :group => :production
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
