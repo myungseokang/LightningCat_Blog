@@ -13,6 +13,7 @@ class PostsController < ApplicationController
         @posts = Post.uncategorized_posts
       else
         @posts = Post.published_posts
+        @posts = @posts.tagged_with(params[:tag]) if params[:tag]
       end
     end
     @category_name = params[:category_id] == '0' ? "Uncategorized" : (@category ? @category.name : "")
@@ -93,6 +94,6 @@ class PostsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
-    params.require(:post).permit(:category_id, :user_id, :title, :content, :published)
+    params.require(:post).permit(:category_id, :user_id, :title, :content, :published, :tag_list)
   end
 end
