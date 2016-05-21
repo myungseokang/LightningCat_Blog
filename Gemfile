@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.2.4'
 # Added for this project
 gem 'jquery-turbolinks'
 gem 'foundation-rails'
