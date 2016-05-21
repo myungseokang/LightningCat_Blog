@@ -18,4 +18,18 @@
 
 * foundation-icons-sass-rails
 
+* acts-as-taggable-on
+
+* search_cop
+
+* mysql2
+
+For Deploying
+
+* mailgun_rails
+
+* pg
+
+* rails_12factor
+
 등등의 gem을 사용하고 있습니다.
