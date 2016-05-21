@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  Rails.application.routes.default_url_options[:host] = 'l3opold7.herokuapp.com'
+  Rails.application.routes.default_url_options[:host] = 'lightningcat.herokuapp.com'
   get 'welcome/readme', as: :readme
 
   root 'home#index'
