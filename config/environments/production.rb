@@ -80,6 +80,6 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
       api_key: Rails.application.secrets.mailgun_api_key,
-      domain: 'unifox.kr'
+      domain: 'sandbox3c8eb40b8bf543019f7ea4073177ad1a.mailgun.org'
   }
 end
