@@ -9,8 +9,12 @@ gem 'devise'
 gem 'rolify'
 gem 'authority'
 gem "letter_opener", :group => :development
+
+# Tag
 gem 'acts-as-taggable-on'
 
+# Search
+gem 'search_cop'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'

@@ -12,12 +12,17 @@
         </div>
       </div>
       <div class='medium-3 columns' style="margin-top: 1em">
+
+        <!-- 검색 -->
+        <%= render "layouts/search" %>
+
         <div class='row'>
           <div class='medium-12 columns'>
             <!-- 내가 작성한 글목록 -->
             <% if user_signed_in? %>
                 <p><%= link_to "My Posts <small>( #{Post.myposts(current_user).size} )</small>".html_safe, list_my_posts_path %></p>
             <% end %>
+
             <!-- 최근 글목록 -->
             <p>Recent Posts :</p>
             <ul>
@@ -25,6 +30,8 @@
                   <li><%= link_to truncate(post.title, length: 16), post_path(post) %></li>
               <% end %>
             </ul>
+
+            <!-- 카테고리 분류 -->
             <p>Category : <small><%= link_to "Admin", categories_path if user_signed_in? && current_user.has_role?(:admin) %></small></p>
             <ul>
               <li>
@@ -38,6 +45,7 @@
                   </li>
               <% end %>
             </ul>
+            <!-- 태그 클라우드 -->
             <p>Tag Cloud :</p>
               <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
                 <%= link_to tag.name, posts_path(tag: tag.name), :class => css_class %>

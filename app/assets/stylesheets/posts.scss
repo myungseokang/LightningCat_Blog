@@ -91,3 +91,26 @@ a.close {
 .css2 { border:1px solid #eaeaea;border-radius:5px;padding:0 3px;background-color: #eaeaea;line-height:1.4em;font-size: .8em; }
 .css3 { border:1px solid #eaeaea;border-radius:5px;padding:0 3px;background-color: #eaeaea;line-height:1.4em;font-size: 1.0em; }
 .css4 { border:1px solid #eaeaea;border-radius:5px;padding:0 3px;background-color: #eaeaea;line-height:1.4em;font-size: 1.2em; }
+
+table#archives {
+  margin-bottom:1em;
+  width:100%;
+  td.year_month {
+    border: 2px solid white;
+    font-size:1.2em;
+    color:#aaa;
+    font-weight:bold;
+    font-style:italic;
+    padding-left: 0;
+  }
+  td.day {
+    border: 2px solid white;
+    text-align:center;
+    padding:5px;
+    background-color: #d5ebef;
+  }
+  td.post {
+    border: 2px solid white;
+    background-color: #f7f7f7;
+  }
+}

@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
   resourcify
   include Authority::Abilities
+  include SearchCop
 
   acts_as_taggable
 
@@ -12,6 +13,11 @@ class Post < ActiveRecord::Base
   scope :myposts, -> (user) { where( user_id: user.id ).order( created_at: :desc ) }
   scope :recent, -> { published_posts.limit(10) }
   scope :uncategorized_posts, -> { published_posts.where(category_id: nil) }
+
+  search_scope :search do
+    attributes :title, :content
+    attributes :comment => "comments.body"
+  end
 
   def tag_list
     self.tags.map(&:name).join(', ')
